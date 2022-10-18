@@ -17,6 +17,6 @@ app.get("/", (req, res) => {
 // route colling
 app.use("/api/v1",studentRoute)
 app.use("/api/v1",userRoute)
-
+ 
 
 module.exports = app;
