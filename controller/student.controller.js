@@ -1,35 +1,54 @@
-const { createStudentService, getStudentService } = require("../services/student.service")
+const { createStudentService, getStudentService, getStudentServiceById } = require("../services/student.service")
 
-exports.getStudent=async(req,res)=>{
+exports.getStudent = async (req, res) => {
     try {
-        const result=await getStudentService()
+        const result = await getStudentService()
         res.status(200).json({
             stauts: "success",
             massage: "Get Data successfully",
             data: result
-          })
+        })
 
     } catch (error) {
         res.status(400).json({
-            stauts:"fail",
+            stauts: "fail",
             message: "Data is not Find",
-            error : error.message
-          })
+            error: error.message
+        })
     }
 }
-exports.createStudent=async(req,res)=>{
+exports.createStudent = async (req, res) => {
     try {
-        const result=await createStudentService(req.body)
+        const result = await createStudentService(req.body)
+        res.status(200).json({
+            stauts: "success",
+            massage: "Get Data successfully",
+            data: result
+        })
+    } catch (error) {
+        res.status(400).json({
+            stauts: "fail",
+            message: "Data is not inserted",
+            error: error.message
+        })
+    }
+}
+
+exports.getStudentById = async (req, res) => {
+    try {
+        const { id } = req.params
+        const result = await getStudentServiceById(id)
         res.status(200).json({
             stauts: "success",
             massage: "Data inside successfully",
             data: result
-          })
+        })
+
     } catch (error) {
         res.status(400).json({
-            stauts:"fail",
-            message: "Data is not inserted",
-            error : error.message
-          })
+            stauts: "fail",
+            message: "Data is not Find",
+            error: error.message
+        })
     }
 }
