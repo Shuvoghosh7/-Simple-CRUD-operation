@@ -1,12 +1,13 @@
 const express=require("express")
 const router=express.Router()
 
-const stydentConroller=require('../controller/student.controller')
+const studentConroller=require('../controller/student.controller')
 
 router.route('/student')
-.get(stydentConroller.getStudent)
-.post(stydentConroller.createStudent)
+.get(studentConroller.getStudent)
+.post(studentConroller.createStudent)
 router.route('/student/:id')
-.get(stydentConroller.getStudentById)
+.get(studentConroller.getStudentById)
+.patch(studentConroller.updateStudentData)
 
 module.exports=router;

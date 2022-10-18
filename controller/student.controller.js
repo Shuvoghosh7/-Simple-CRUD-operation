@@ -1,4 +1,4 @@
-const { createStudentService, getStudentService, getStudentServiceById } = require("../services/student.service")
+const { createStudentService, getStudentService, getStudentServiceById, updateStudentService } = require("../services/student.service")
 
 exports.getStudent = async (req, res) => {
     try {
@@ -48,6 +48,24 @@ exports.getStudentById = async (req, res) => {
         res.status(400).json({
             stauts: "fail",
             message: "Data is not Find",
+            error: error.message
+        })
+    }
+}
+
+exports.updateStudentData=async(req,res)=>{
+    try {
+        const { id } = req.params
+        const result =await updateStudentService(id,req.body)
+        res.status(200).json({
+            stauts: "success",
+            massage: "successfully update Data",
+            data: result
+        })
+    } catch (error) {
+        res.status(400).json({
+            stauts: "fail",
+            message: "Data is not Update",
             error: error.message
         })
     }
