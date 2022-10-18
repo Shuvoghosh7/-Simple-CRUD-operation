@@ -76,3 +76,19 @@ exports.login = async (req, res) => {
     }
 }
 
+exports.getMe = async (req, res) => {
+    try {
+      const result= await getUserByEmail(req.user?.email)
+      res.status(200).json({
+        status:"Success",
+        data:result
+      })
+  
+    } catch (error) {
+      res.status(400).json({
+        stauts: "fail",
+        error,
+      })
+    }
+  }
+
