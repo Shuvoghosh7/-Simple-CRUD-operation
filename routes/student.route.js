@@ -9,5 +9,6 @@ router.route('/student')
 router.route('/student/:id')
 .get(studentConroller.getStudentById)
 .patch(studentConroller.updateStudentData)
+.delete(studentConroller.deleteStudentData)
 
 module.exports=router;

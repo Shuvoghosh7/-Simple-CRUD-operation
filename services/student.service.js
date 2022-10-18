@@ -20,3 +20,8 @@ exports.updateStudentService=async(id,data)=>{
     })
     return result;
 }
+
+exports.deleteStudentService=async(id)=>{
+    const result=await Student.deleteOne({_id:id})
+    return result;
+}

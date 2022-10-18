@@ -1,4 +1,4 @@
-const { createStudentService, getStudentService, getStudentServiceById, updateStudentService } = require("../services/student.service")
+const { createStudentService, getStudentService, getStudentServiceById, updateStudentService, deleteStudentService } = require("../services/student.service")
 
 exports.getStudent = async (req, res) => {
     try {
@@ -66,6 +66,27 @@ exports.updateStudentData=async(req,res)=>{
         res.status(400).json({
             stauts: "fail",
             message: "Data is not Update",
+            error: error.message
+        })
+    }
+}
+
+exports.deleteStudentData=async(req,res)=>{
+    try {
+        const{id}=req.params;
+        const result=await deleteStudentService(id)
+        if(!result.deletedCount){
+            return res.status({
+              stauts: "fail",
+              error: "Could not delete the Data",
+            })
+          }
+          res.send(result)
+
+    } catch (error) {
+        res.status(400).json({
+            stauts: "fail",
+            message: "Data is not Delete",
             error: error.message
         })
     }
