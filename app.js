@@ -7,16 +7,14 @@ const mongoose = require("mongoose");
 app.use(express.json());
 app.use(cors());
 //routes
-// const studentRoute=require('./routes/record.route')
+const studentRoute=require('./routes/student.route')
 
 app.get("/", (req, res) => {
   res.send("Route is working! YaY!");
 });
 
 // route colling
-// app.use("/api/v1",recordsRoute)
-
-
+app.use("/api/v1",studentRoute)
 
 
 module.exports = app;
